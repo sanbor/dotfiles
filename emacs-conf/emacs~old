@@ -1,0 +1,70 @@
+;; basic stuff
+(show-paren-mode 1)
+(setq-default indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 2)
+(defvaralias 'js-indent-level 'tab-width)
+(defvaralias 'css-indent-level 'tab-width)
+(defvaralias 'sgml-indent-level 'tab-width)
+(defvaralias 'tab-indent-level 'tab-width)
+
+(setq use-file-dialog nil)
+(delete-selection-mode 1)
+
+(setq vc-handled-backends nil
+         make-backup-files nil)
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;; recentf
+(require 'recentf)
+(setq recentf-save-file "~/.recentf")
+(recentf-mode 1)
+(setq recentf-max-menu-items 20
+      recentf-max-saved-items 1000)
+
+;; ido
+"(custom-set-variables
+ '(ido-enable-flex-matching t)
+ '(ido-mode 'both)
+ '(ido-use-virtual-buffers t))
+"
+; more packages
+(custom-set-variables
+ '(package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                      ("elpa" . "http://tromey.com/elpa/")
+                      ("melpa" . "http://melpa.milkbox.net/packages/")
+                      ("marmalade" .
+                       "http://marmalade-repo.org/packages/"))))
+(put 'dired-find-alternate-file 'disabled nil)
+(load-theme 'tango-dark t)
+
+;; Show whitepsaces, trailling spaces, lines longer than 80 columns, etc.
+(setq-default whitespace-line-column 80
+      whitespace-style '(face tabs trailing lines-tail))
+;(setq whitespace-style '(tabs trailing lines tab-mark))
+; (setq whitespace-style '(face empty tabs lines-tail trailing))
+ (global-whitespace-mode t)
+
+;(global-whitespace-mode 1)
+
+(setq-default cursor-type 'bar)
+
+(tool-bar-mode 0)
+(menu-bar-mode 0)
+(setq-default indicate-empty-lines t)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+;; Move lines with M-Up M-Down
+;;(eval-after-load "move-text" '(move-text-default-bindings))
+;;(global-set-key (kbd "M-p") 'move-text-up)
+;;(global-set-key (kbd "M-n") 'move-text-down))
+;; MoveText
+(autoload 'move-text-default-bindings "move-text-default-bindings")
+(eval-after-load "move-text-default-bindings"
+    '(progn
+         (move-text-default-bindings)
+         )
+    )
+(add-hook 'after-init-hook 'move-text-default-bindings)
+(global-set-key (kbd "C-<tab>") 'next-buffer)
+(global-set-key (kbd "C-S-<iso-lefttab>") 'previous-buffer)

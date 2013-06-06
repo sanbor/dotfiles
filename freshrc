@@ -1,0 +1,47 @@
+#f freshshell.com
+#
+# Examples:
+#
+#   fresh twe4ked/dotfiles shell/functions.sh
+#   fresh jasoncodes/dotfiles aliases/rails.sh
+#   fresh jasoncodes/dotfiles config/tmux.conf --file
+#
+# See http://freshshell.com/readme for documentation.
+
+#rm ~/.emacs
+fresh freshshell/fresh bin/fresh --bin
+# A prompt used by both zsh and bash
+fresh nojhan/liquidprompt liquidprompt --file
+fresh bashrc --file
+
+fresh tmux.conf --file
+#fresh emacs --file
+
+fresh maxbrunsfeld/vim-emacs-bindings plugin/emacs-bindings.vim --file=~/.vim/plugin/emacs-bindings.vim
+fresh vimrc --file
+
+fresh i3 --file=~/.i3/
+
+# fresh bbatsov/prelude . --file=~/.emacs.d/ doesn't work because is read-only
+if ! [ -d ~/.prelude ]; then
+  git clone git://github.com/bbatsov/prelude.git ~/.prelude
+  ln -s ~/.prelude ~/.emacs.d
+
+  rm -rf ~/.prelude/personal
+  ln -s ~/.dotfiles/emacs-conf/prelude-conf/personal ~/.prelude/personal
+  ln -s ~/.dotfiles/emacs-conf/prelude-conf/prelude-modules.el ~/.prelude/prelude-modules.el
+else
+  echo "Fetch last prelude version...";
+  cd ~/.prelude/ && git pull;
+fi
+
+# Zsh dependencies
+fresh zsh-users/zsh-syntax-highlighting zsh-syntax-highlighting.zsh --file=zsh/zsh-syntax-highlighting.zsh
+fresh zsh-users/zsh-syntax-highlighting highlighters --file=zsh/highlighters/
+fresh zsh-users/zsh-completions src --file=zsh/zsh-completions/
+
+# Zsh conf and source dependencies
+fresh zshrc --file
+
+# Sometimes necesary when building completion (rebuild zcompdump)
+rm -f ~/.zcompdump;
