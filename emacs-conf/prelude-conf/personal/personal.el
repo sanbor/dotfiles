@@ -35,9 +35,12 @@
 (setq-default cursor-type 'bar)
 (blink-cursor-mode -1)
 (display-time-mode 1)
+
 ; Mode specific configurations follow.
+(prelude-ensure-module-deps '(js3-mode))
 (add-hook 'js3-mode-hook
           (lambda ()
+            (js3-manual-indentation t)
             (whitespace-mode t)
            ))
 
