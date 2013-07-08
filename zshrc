@@ -266,8 +266,8 @@ load_aliases() {
     alias pinst='sudo python setup.py install && sudo rm -r build && sudo rm -r dist && sudo rm -r *egg-info' # install a Python package
     alias beep='echo -n "\a"'
     alias lst="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
-    export EDITOR=emacs
-    export GIT_EDITOR=emacs
+    export EDITOR=vim
+    export GIT_EDITOR=vim
     alias e='emacsclient -t'
     alias ec='emacsclient --no-wait -c'
 }
