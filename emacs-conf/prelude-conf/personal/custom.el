@@ -8,7 +8,8 @@
  '(js3-indent-dots nil)
  '(js3-lazy-dots nil)
  '(js3-manual-indentation t)
- '(js3-pretty-lazy-vars nil))
+ '(js3-pretty-lazy-vars nil)
+ '(smartparens-global-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
