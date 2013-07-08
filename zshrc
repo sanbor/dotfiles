@@ -266,8 +266,8 @@ load_aliases() {
     alias pinst='sudo python setup.py install && sudo rm -r build && sudo rm -r dist && sudo rm -r *egg-info' # install a Python package
     alias beep='echo -n "\a"'
     alias lst="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
-    export EDITOR=emacsclient
-    export GIT_EDITOR=emacsclient
+    export EDITOR=emacs
+    export GIT_EDITOR=emacs
     alias e='emacsclient -t'
     alias ec='emacsclient --no-wait -c'
 }
@@ -350,7 +350,7 @@ if is_linux; then
 fi
 
 # Additional config starts here
-export MAVEN_OPTS='-Xms256m -XX:MaxPermSize=1024m -Xmx1024m'
+export MAVEN_OPTS='-Xms256M -XX:MaxPermSize=1024M -Xmx1024M'
 
 # put fancy stuff on the right
 #if which rbenv &> /dev/null; then

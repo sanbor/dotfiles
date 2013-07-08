@@ -17,7 +17,7 @@
 
 ;; Backup store cutomizations
 (setq backup-by-copying t    ; Don't delink hardlinks
-      backup-directory-alist '(("." . "~/.emacs.d/temps/backups"))
+      backup-directory-alist '(("." . "~/.emacs.backups"))
       version-control t      ; Use version numbers on backups
       delete-old-versions t  ; Automatically delete excess backups
       kept-new-versions 20   ; how many of the newest versions to keep
@@ -27,9 +27,7 @@
       undo-tree-history-directory-alist '(("." . "~/.emacs.d/temps/undotrees"))
       )
 
-(global-auto-revert-mode t)
-(setq x-select-enable-clipboard t)  ; makes killing/yanking interact with clipboard X11 selection
-(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
+;(global-auto-revert-mode t)
 
 ;; Some comfort styles
 (setq-default cursor-type 'bar)
